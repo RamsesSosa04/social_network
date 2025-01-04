@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido a Social Network</h1>
+    <p>Conéctate con tus amigos y comparte momentos especiales.</p>
+    <a href="{{ url_for('main.register') }}">Regístrate ahora</a>
+{% endblock %}
