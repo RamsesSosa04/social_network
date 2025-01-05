@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Feed{% endblock %}
+
+{% block content %}
+    <h1>Feed de Publicaciones</h1>
+    <form method="POST" action="{{ url_for('main.feed') }}">
+        <textarea name="content" placeholder="¿Qué estás pensando?" required></textarea>
+        <button type="submit">Publicar</button>
+    </form>
+    <hr>
+    <section>
+        {% for post in posts %}
+            <article>
+                <h3>{{ post.author.username }}</h3>
+                <p>{{ post.content }}</p>
+                <p><small>{{ post.created_at }}</small></p>
+                <a href="#">Me gusta</a> | <a href="#">Comentar</a>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
