@@ -1,25 +1,19 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import LoginManager
-
-db = SQLAlchemy()
-migrate = Migrate()
-login_manager = LoginManager()
+from app.models import db, login_manager
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///social_network.db'
     app.config['SECRET_KEY'] = 'your_secret_key'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///social_network.db'
 
-# Inicializar extensiones
     db.init_app(app)
-    migrate.init_app(app, db)
     login_manager.init_app(app)
+    login_manager.login_view = 'login'
 
-# Registrar bluepoints o rutas
+    with app.app_context():
+        db.create_all()
 
-    from app.routes import main
-    app.register_bluepoints(main)
+    from app.routes import app as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     return app
