@@ -5,6 +5,11 @@ from werkzeug.security import generate_password_hash
 
 main = Blueprint('main', __name__)
 
+@main.route('/')
+def index():
+    return redirect(url_for('main.login'))
+
+
 # Ruta para registrarse
 @main.route('/register', methods=['GET', 'POST'])
 def register():

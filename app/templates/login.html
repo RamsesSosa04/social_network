@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% block content %}
 {% block title %}Iniciar Sesión{% endblock %}
 <form method="POST" action="{{ url_for('main.login') }}">
         <label for="email">Correo Electrónico:</label>
