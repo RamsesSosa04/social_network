@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Crear Cuenta</h1>
-    <form method="POST" action="{{ url_for('main.register') }}">
+    <form id = "registerForm" method="POST" action="{{ url_for('main.register') }}">
         <label for="username">Usuario: </label>
         <input type="text" name="username" id="username" required>
         <label for="email">Correo Electronico: </label>
