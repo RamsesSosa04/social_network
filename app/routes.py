@@ -9,7 +9,6 @@ main = Blueprint('main', __name__)
 def index():
     return redirect(url_for('main.login'))
 
-
 # Ruta para registrarse
 @main.route('/register', methods=['GET', 'POST'])
 def register():
