@@ -4,15 +4,15 @@
 
 {% block content %}
     <h1>Crear Cuenta</h1>
-    <form id = "registerForm" method="POST" action="{{ url_for('main.register') }}">
+    <form id="registerForm" method="POST" action="{{ url_for('main.register') }}">
         <label for="username">Usuario: </label>
         <input type="text" name="username" id="username" required>
-        <label for="email">Correo Electronico: </label>
+        <label for="email">Correo Electrónico: </label>
         <input type="email" name="email" id="email" required>
         <label for="password">Contraseña: </label>
         <input type="password" name="password" id="password" required>
-        <label for="confirm_password">Confirmar contraseña: </label>
+        <label for="confirm_password">Confirmar Contraseña: </label>
         <input type="password" name="confirm_password" id="confirm_password" required>
         <button type="submit">Registrarse</button>
-    </form>
+    </form>    
 {% endblock %}

@@ -10,6 +10,15 @@
     <header>
         <nav>
             <ul>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for category, message in messages %}
+                                <li class="{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
                 <li><a href="{{url_for('main.index')}}">Inicio</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('main.feed') }}">Feed</a></li>
@@ -28,5 +37,6 @@
     <footer>
         <p>&copy; 2024 Social Network. Todos los derechos reservados.</p>
     </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

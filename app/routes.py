@@ -17,6 +17,12 @@ def register():
         username = request.form['username']
         email = request.form['email']
         password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        
+        if password != confirm_password:
+            flash('Las contraseñas no coinciden.', 'error')
+            return redirect(url_for('main.register'))
+
 
         if User.query.filter_by(email=email).first():
             flash('El correo ya está registrado.')
@@ -26,7 +32,7 @@ def register():
         new_user.set_password(password)
         db.session.add(new_user)
         db.session.commit()
-        flash('Registro exitoso. Ahora puedes iniciar sesión.')
+        flash('Registro exitoso. Ahora puedes iniciar sesión.', 'success')
         return redirect(url_for('main.login'))
     
     return render_template('register.html')
