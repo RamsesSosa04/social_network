@@ -2,29 +2,31 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
     const password = document.querySelector('input[name="password"]')?.value;
     const password_confirm = document.querySelector('input[name="confirm_password"]')?.value;
 
-    console.log('register.js cargando correctamente');
+    const modal = document.getElementById('errorModal');
+    const modalMessage = document.getElementById('modal-message');
+    const closeBtn = document.querySelector('.close');
 
-    let errorDiv = document.getElementById('error-message');
-    if (!errorDiv) {
-        errorDiv = document.createElement('div');
-        errorDiv.id = 'error-message';
-        errorDiv.style.color = 'red';
-        document.getElementById('registerForm').prepend(errorDiv);
-    }
+    // Mostrar el modal
+    const showModal = (message) => {
+        modalMessage.textContent = message;
+        modal.style.display = 'block';
+    };
 
-    // Limpiar mensajes de error previos
-    errorDiv.textContent = '';
+    // Cerrar el modal
+    closeBtn.onclick = () => {
+        modal.style.display = 'none';
+    };
 
     // Validar longitud de la contraseña
     if (password.length < 6) {
-        errorDiv.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+        showModal('La contraseña debe tener al menos 6 caracteres.');
         event.preventDefault();
         return;
     }
 
     // Validar que las contraseñas coincidan
     if (password !== password_confirm) {
-        errorDiv.textContent = 'Las contraseñas no coinciden.';
+        showModal('Las contraseñas no coinciden.');
         event.preventDefault();
         return;
     }
