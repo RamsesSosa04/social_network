@@ -2,6 +2,8 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
     const password = document.querySelector('input[name="password"]').value;
     const password_confirm = document.querySelector('input[name="confirm_password"]').value;
 
+    console.log('register.js cargando correctamente')
+
     let errorDiv = document.getElementById('error-message');
     if(!errorDiv) {
         errorDiv = document.createElement('div');
