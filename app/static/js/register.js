@@ -23,7 +23,6 @@ document.getElementById('registerForm').addEventListener('submit', function (eve
         event.preventDefault();
         return;
     }
-
     // Validar que las contraseñas coincidan
     if (password !== password_confirm) {
         showModal('Las contraseñas no coinciden.');
