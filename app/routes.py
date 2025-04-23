@@ -35,7 +35,7 @@ def register():
         return redirect(url_for('main.login'))
     
     return render_template('register.html')
-
+#Ruta para loguearse
 @main.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -52,6 +52,7 @@ def login():
 
     return render_template('login.html')
 
+#Ruta para salir de la sesion
 @main.route('/logout')
 @login_required
 def logout():
@@ -59,6 +60,7 @@ def logout():
     flash('Has cerrado sesión.')
     return redirect(url_for('main.index'))
 
+#Ruta para hacer una publicacion
 @main.route('/feed', methods=['GET', 'POST'])
 @login_required
 def feed():
