@@ -7,7 +7,6 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     return redirect(url_for('main.login'))
-
 # Ruta para registrarse
 @main.route('/register', methods=['GET', 'POST'])
 def register():
@@ -21,7 +20,6 @@ def register():
             flash('Las contraseñas no coinciden.', 'error')
             return redirect(url_for('main.register'))
 
-
         if User.query.filter_by(email=email).first():
             flash('El correo ya está registrado.')
             return redirect(url_for('main.register'))
@@ -34,7 +32,8 @@ def register():
         return redirect(url_for('main.login'))
     
     return render_template('register.html')
-#Ruta para loguearse
+
+# Ruta para loguearse
 @main.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
