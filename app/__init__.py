@@ -12,7 +12,6 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'main.login'
 
-    # Configura Flask-Migrate
     migrate = Migrate(app, db)
 
     with app.app_context():
