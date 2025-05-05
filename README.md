@@ -1,1 +1,1 @@
-Se inicializa con python run.py encendiendo el entorno virtual
+It is initialized with python run.py starting the virtual environment
